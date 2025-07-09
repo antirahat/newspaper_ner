@@ -1,17 +1,24 @@
-# Newspaper Named Entity Recognition (NER)
+# Newspaper Article Scraper
 
-A web application that performs Named Entity Recognition on newspaper articles to extract and analyze entities such as persons, organizations, locations, and more.
+A Python-based web scraper that automatically extracts and saves news articles from Prothom Alo's English website, focusing on accident-related news.
 
 ## Features
 
-- Extract named entities from newspaper articles
-- Support for multiple news sources
-- Interactive visualization of entity relationships
-- Entity categorization and classification
-- Export results in various formats
+- Automated scraping of accident-related news articles
+- Clean text extraction using newspaper3k library
+- Saves articles with meaningful filenames
+- Includes article metadata (title and URL)
+- Error handling and sanitized file naming
 
-## Installation
+## Prerequisites
 
-1. Clone the repository:
+- Python 3.x
+- Chrome browser
+- ChromeDriver (included in the project)
+
+## Required Libraries
+
 ```bash
-git clone https://github.com/yourusername/newspaper_ner.git
+newspaper3k
+selenium
+nltk```
