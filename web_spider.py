@@ -1,8 +1,15 @@
+import requests
+from bs4 import BeautifulSoup
 import time
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.common.by import By  # Added import
+from selenium.webdriver.common.by import By
+import os
+
+# Create articles directory if it doesn't exist
+if not os.path.exists('articles'):
+    os.makedirs('articles')
 
 chrome_options = Options()
 chrome_options.add_argument("--incognito")
@@ -33,5 +40,21 @@ for article in articles:
 
     if printed == 5:
         break
+
+for i, link in enumerate(printed_links, 1):
+    response = requests.get(link)
+    soup = BeautifulSoup(response.content, "html.parser")
+    title = soup.find("h1").get_text(strip=True)
+    content = " ".join([p.get_text(strip=True) for p in soup.find_all("p")])
+
+    
+    # Create a file name from the article title or use a default name
+    file_name = f'article_{i}.txt'
+    file_path = os.path.join('articles', file_name)
+    
+    # Save the article text to a file
+    with open(file_path, 'w', encoding='utf-8') as f:
+        f.write(content)
+    print(f"Saved article {i} to {file_path}")
 
 driver.quit()
