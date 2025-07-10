@@ -49,12 +49,12 @@ for i, link in enumerate(printed_links, 1):
 
     
     # Create a file name from the article title or use a default name
-    file_name = f'article_{i}.txt'
-    file_path = os.path.join('articles', file_name)
+    # file_name = f'article_{i}.txt'
+    # file_path = os.path.join('articles', file_name)
     
-    # Save the article text to a file
-    with open(file_path, 'w', encoding='utf-8') as f:
-        f.write(content)
-    print(f"Saved article {i} to {file_path}")
+    # # Save the article text to a file
+    # with open(file_path, 'w', encoding='utf-8') as f:
+    #     f.write(content)
+    # print(f"Saved article {i} to {file_path}")
 
 driver.quit()
