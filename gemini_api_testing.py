@@ -1,12 +1,12 @@
 from google import genai
 from dotenv import load_dotenv
 import os 
+import json
 
 load_dotenv(dotenv_path=".env.local")
 
 client = genai.Client()
 
-# ...existing code...
 response = client.models.generate_content(
         model="gemini-2.5-flash",
         contents=f"""Your task is to perform Named Entity Recognition (NER) using the IOB2 tagging schema from CoNLL 2003 in this article:
@@ -112,5 +112,20 @@ district I-DISTRICT
 
 """
     )
-# ...existing code...
-print(response.text)
+
+file_name = "article_3.json"
+file_path = os.path.join('articles', file_name)
+
+# Extract the text/content from the response object
+response_text = response.text if hasattr(response, "text") else str(response)
+
+# If the response is a JSON string, parse it first
+try:
+    response_json = json.loads(response_text)
+except Exception:
+    response_json = {"response": response_text}
+
+with open(file_path, 'w', encoding='utf-8') as f:
+    json.dump(response_json, f, ensure_ascii=False, indent=2)
+
+print(f"Saved article to {file_path}")
