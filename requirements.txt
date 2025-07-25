@@ -1,3 +1,7 @@
 newspaper3k
 lxml-html-clean
 nltk
+requests
+beautifulsoup4
+selenium
+python-dotenv
