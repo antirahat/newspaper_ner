@@ -6,7 +6,7 @@ This repository contains code and other information regarding accident related N
 
 This following prompt is used to build the initial layer:
 
-"""
+```
 Your task is to perform Named Entity Recognition (NER) using the IOB2 tagging schema from CoNLL 2003 in this article:
 {"article_3.txt"}
 The entity types are:
@@ -108,4 +108,4 @@ of O
 Jashore B-DISTRICT
 district I-DISTRICT
 
-"""
+```
